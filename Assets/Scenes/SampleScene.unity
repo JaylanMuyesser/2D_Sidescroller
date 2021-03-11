@@ -282,7 +282,7 @@ GameObject:
   - component: {fileID: 423675725}
   m_Layer: 0
   m_Name: Ground
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -461,6 +461,7 @@ MonoBehaviour:
   enemy: {fileID: 459352402}
   respawnPoint: {fileID: 1305558956}
   Player: {fileID: 487094871}
+  enemyJumpSpeed: 10
 --- !u!212 &459352401
 SpriteRenderer:
   m_ObjectHideFlags: 0
