@@ -10,6 +10,7 @@ public class ScoreScript : MonoBehaviour {
     private PlayerScript healthCheck;
     public float penalty = 1000f;
 
+
     void Start() {
         scoreAmount = 0f;
         pointIncreasedPerSecond = 500f;
@@ -20,6 +21,7 @@ public class ScoreScript : MonoBehaviour {
     void Update() {
         scoreText.text = "Score: " + (int)scoreAmount;
         scoreAmount += pointIncreasedPerSecond * Time.deltaTime;
+        penalty += pointIncreasedPerSecond * Time.deltaTime;
 
         if (healthCheck.playerHealth ==  0) {
             pointIncreasedPerSecond = 0f;
