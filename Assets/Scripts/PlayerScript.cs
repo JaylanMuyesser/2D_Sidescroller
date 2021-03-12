@@ -8,7 +8,7 @@ public class PlayerScript : MonoBehaviour {
     private bool isGrounded, isJumping;
     private Rigidbody2D rb;
     public float playerHealth = 5f, jumpVelocity = 10f, jumpTimerCounter, jumpTime, invincibilityLength;
-
+    public ScoreScript scoreScript;
     void Start() {
         rb = GetComponent<Rigidbody2D>();
     }
@@ -54,5 +54,9 @@ public class PlayerScript : MonoBehaviour {
                 invincibilityLength = 2;
             }
         }
-    }
+        if (collision.collider.gameObject.CompareTag("Enemy"))
+        {
+            scoreScript.scoreAmount -= scoreScript.penalty;
+        }
+    }   
 }

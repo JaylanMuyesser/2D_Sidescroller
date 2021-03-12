@@ -8,6 +8,7 @@ public class ScoreScript : MonoBehaviour {
     public float scoreAmount, pointIncreasedPerSecond;
     public GameObject Player;
     private PlayerScript healthCheck;
+    public float penalty = 1000f;
 
     void Start() {
         scoreAmount = 0f;
@@ -24,4 +25,5 @@ public class ScoreScript : MonoBehaviour {
             pointIncreasedPerSecond = 0f;
         }
     }
+    
 }
