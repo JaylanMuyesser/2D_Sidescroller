@@ -709,6 +709,7 @@ MonoBehaviour:
   jumpTimerCounter: 0
   jumpTime: 0.35
   invincibilityLength: 0
+  scoreScript: {fileID: 1732229110}
 --- !u!212 &487094875
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1457,6 +1458,7 @@ MonoBehaviour:
   scoreAmount: 0
   pointIncreasedPerSecond: 0
   Player: {fileID: 487094871}
+  penalty: 1000
 --- !u!4 &1732229111
 Transform:
   m_ObjectHideFlags: 0
