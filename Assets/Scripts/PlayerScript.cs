@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class PlayerScript : MonoBehaviour {
+    public Powerups jokeCards;
     public Text healthText;
     private bool isGrounded, isJumping;
     private Rigidbody2D rb;
