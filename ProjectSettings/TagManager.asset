@@ -6,6 +6,12 @@ TagManager:
   tags:
   - Enemy
   - Ground
+  - Background
+  - InvinciblePowerup
+  - TimeStopPowerup
+  - JokeCard
+  - Coin
+  - JokeCardPowerup
   layers:
   - Default
   - TransparentFX

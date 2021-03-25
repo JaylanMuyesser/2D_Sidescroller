@@ -10,6 +10,10 @@ public class PlayerScript : MonoBehaviour {
     private Rigidbody2D rb;
     public float playerHealth = 5f, jumpVelocity = 10f, jumpTimerCounter, jumpTime, invincibilityLength;
     public ScoreScript scoreScript;
+
+    [SerializeField]
+    private bool isPaused = false;
+    public GameObject pausePanel;
     void Start() {
         rb = GetComponent<Rigidbody2D>();
     }
@@ -44,6 +48,19 @@ public class PlayerScript : MonoBehaviour {
         }
 
         healthText.text = "Health: " + (int)playerHealth;
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (isPaused)
+            {
+                ResumeGame();
+            }
+            else
+            {
+                PauseGame();
+            }
+        }
+
     }
 
     private void OnCollisionEnter2D(Collision2D collision) {
@@ -60,4 +77,21 @@ public class PlayerScript : MonoBehaviour {
             scoreScript.scoreAmount -= scoreScript.penalty;
         }
     }   
+    private void PauseGame()
+    {
+        pausePanel.SetActive(true);
+        Time.timeScale = 0f;
+        isPaused = true;
+    }
+    public void ResumeGame()
+    {
+        pausePanel.SetActive(false);
+        Time.timeScale = 1f;
+        isPaused = false;
+
+    }
+    public  void Quit()
+    {
+        Application.Quit();
+    }
 }

@@ -7,7 +7,6 @@ public class JokeCardVelocity : MonoBehaviour
 
     public float speed = 20f;
     public Rigidbody2D rb;
-    public Powerups powerups;
 
 
 
@@ -23,8 +22,6 @@ public class JokeCardVelocity : MonoBehaviour
 
         if (enemy != null)
         {
-
-
             enemy.enemy.transform.position = enemy.respawnPoint.transform.position;
             Destroy(gameObject);
 

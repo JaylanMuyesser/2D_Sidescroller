@@ -1,12 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 public class Powerups : MonoBehaviour
 {
-
-    public bool invincibleActive = false;
-
     public PlayerScript player;
     public ScoreScript score;
     [SerializeField]
@@ -17,6 +14,8 @@ public class Powerups : MonoBehaviour
     private float timeRemainingTimeStop = 5;
     [SerializeField]
     //private float timeRemainingCoin = 5;
+    public Image timeStopBar;
+    public Image timeStopFill;
 
     //Joke Card Variables
     public int numberOfJokeCards;
@@ -31,28 +30,41 @@ public class Powerups : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(invincibleActive)
+       
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("InvinciblePowerup"))
         {
             Invincible();
-        }
-    }
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-
-        if(collision.collider.gameObject.CompareTag("InvinciblePowerup"))
-        {      
             timerIsRunning = true;
             Debug.Log("touch");
-            invincibleActive = true;
             Destroy(collision.gameObject);
         }
-
-
-
-
-
+        if (collision.gameObject.CompareTag("TimeStopPowerup"))
+        {
+            timerIsRunning = true;
+            Timestop();
+            Debug.Log("touch");
+            Destroy(collision.gameObject);
+        }
+        if (collision.gameObject.CompareTag("Coin"))
+        {
+            Coin();
+            timerIsRunning = true;
+            Debug.Log("touch");
+            Destroy(collision.gameObject);
+        }
+        if (collision.gameObject.CompareTag("JokeCardPowerup"))
+        {
+            Debug.Log("touch");
+            if (numberOfJokeCards < 3)
+                numberOfJokeCards++;
+            timerIsRunning = true;
+            Destroy(collision.gameObject);
+        }
     }
+  
     public void Invincible()
     {
         if (timerIsRunning)
@@ -64,49 +76,40 @@ public class Powerups : MonoBehaviour
             }
             else
             {
+                timerIsRunning = false;
                 player.invincibilityLength = 0;
                 Debug.Log("Time has run out!");
                 timeRemainingInvincible = 0;
-                timerIsRunning = false;
+                
             }
         }
     
     }
     public void Timestop()
-    {
-        if (gameObject.CompareTag("TimeStopPowerup"))
-        {
+    {      
             if (timerIsRunning)
             {
                 if (timeRemainingTimeStop > 0)
                 {
+                    timeStopBar.gameObject.SetActive(true);
+                    timeStopFill.fillAmount = timeRemainingTimeStop;
                     Time.timeScale = 0.65f;
-                    timeRemainingTimeStop -= Time.deltaTime;
                 }
                 else
                 {
+                    timeStopBar.gameObject.SetActive(false);
                     Time.timeScale = 1f;
                     Debug.Log("Time has run out!");
                     timeRemainingTimeStop = 0;
                     timerIsRunning = false;
-                }
-            }
+                }  
         }
     }
     public void Coin()
     {
-        if (gameObject.CompareTag("Coin"))
-        {
-            score.scoreAmount += 1000;
-        }
+            Debug.Log("coinnnnnns");
+            score.scoreAmount += 1000;        
     }
-    public void JokeCard()
-    {
-        if (gameObject.CompareTag("Joke Card"))
-        {
-            if (numberOfJokeCards <= 10)
-                numberOfJokeCards++;         
-        }
-    }
-
+   
+   
 }
