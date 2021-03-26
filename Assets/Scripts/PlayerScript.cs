@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class PlayerScript : MonoBehaviour {
     public Powerups jokeCards;
@@ -15,8 +16,10 @@ public class PlayerScript : MonoBehaviour {
     private bool isPaused = false;
     public GameObject pausePanel;
     public GameObject optionsPanel;
+    public GameObject deathPanel;
     void Start() {
         rb = GetComponent<Rigidbody2D>();
+        Time.timeScale = 1f;
     }
 
     void Update() {
@@ -46,6 +49,8 @@ public class PlayerScript : MonoBehaviour {
 
         if (playerHealth == 0) {
             Destroy(gameObject);
+            deathPanel.SetActive(true);
+            Time.timeScale = 0f;
         }
 
         healthText.text = "Health: " + (int)playerHealth;
@@ -92,6 +97,7 @@ public class PlayerScript : MonoBehaviour {
         isPaused = false;
 
     }
+
     public  void Quit()
     {
         Application.Quit();

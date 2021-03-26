@@ -11,7 +11,7 @@ public class Powerups : MonoBehaviour
     [SerializeField]
     private float timeRemainingInvincible = 10;
     [SerializeField]
-    private float timeRemainingTimeStop = 5;
+    public float timeRemainingTimeStop = 1;
     [SerializeField]
     //private float timeRemainingCoin = 5;
     public Image timeStopBar;
@@ -92,18 +92,19 @@ public class Powerups : MonoBehaviour
             {
                 if (timeRemainingTimeStop > 0)
                 {
-                timeRemainingTimeStop -= Time.deltaTime;    
+                timeRemainingTimeStop -= Time.deltaTime * 0.3f;    
                     timeStopBar.gameObject.SetActive(true);
                     timeStopFill.fillAmount = timeRemainingTimeStop;
                     Time.timeScale = 0.65f;
                 }
                 else
                 {
-                    timeStopBar.gameObject.SetActive(false);
+                timerIsRunning = false;
+                timeStopBar.gameObject.SetActive(false);
                     Time.timeScale = 1f;
                     Debug.Log("Time has run out!");
-                    timeRemainingTimeStop = 0;
-                    timerIsRunning = false;
+                    timeRemainingTimeStop = 1;
+
                 }  
         }
     }

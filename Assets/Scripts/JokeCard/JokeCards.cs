@@ -12,8 +12,9 @@ public class JokeCards : MonoBehaviour
     void Update()
     {
 
-        if(Input.GetKeyDown(KeyCode.P) && powerups.numberOfJokeCards >0)
+        if(Input.GetKeyDown(KeyCode.Return) && powerups.numberOfJokeCards >0)
         {
+            Debug.Log("shoot");
             Shoot();
         }
     }
