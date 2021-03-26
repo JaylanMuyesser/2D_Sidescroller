@@ -14,6 +14,7 @@ public class PlayerScript : MonoBehaviour {
     [SerializeField]
     private bool isPaused = false;
     public GameObject pausePanel;
+    public GameObject optionsPanel;
     void Start() {
         rb = GetComponent<Rigidbody2D>();
     }
@@ -68,7 +69,7 @@ public class PlayerScript : MonoBehaviour {
         if (collision.collider.gameObject.CompareTag("Enemy")) {
 
             if (invincibilityLength <= 0) {
-                playerHealth -= 1;
+                playerHealth -= 25;
                 invincibilityLength = 2;
             }
         }
@@ -86,6 +87,7 @@ public class PlayerScript : MonoBehaviour {
     public void ResumeGame()
     {
         pausePanel.SetActive(false);
+        optionsPanel.SetActive(false);
         Time.timeScale = 1f;
         isPaused = false;
 

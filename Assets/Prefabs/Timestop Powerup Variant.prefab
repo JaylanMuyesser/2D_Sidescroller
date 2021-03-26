@@ -7,9 +7,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 466240007937656356, guid: 5cfeee2f6683ff24998698d62147d69d, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 1.92
+      objectReference: {fileID: 0}
+    - target: {fileID: 466240007937656356, guid: 5cfeee2f6683ff24998698d62147d69d, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 1.9218769
+      objectReference: {fileID: 0}
     - target: {fileID: 466240007937656357, guid: 5cfeee2f6683ff24998698d62147d69d, type: 3}
       propertyPath: m_Name
-      value: Timestop Powerup
+      value: Timestop Powerup Variant
       objectReference: {fileID: 0}
     - target: {fileID: 466240007937656357, guid: 5cfeee2f6683ff24998698d62147d69d, type: 3}
       propertyPath: m_TagString
@@ -59,5 +67,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 466240007937656359, guid: 5cfeee2f6683ff24998698d62147d69d, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 1861207829404093838, guid: 98fe27145ba513140b46dd420f39a501, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5cfeee2f6683ff24998698d62147d69d, type: 3}

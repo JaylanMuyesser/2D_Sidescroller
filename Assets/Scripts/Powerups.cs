@@ -30,7 +30,8 @@ public class Powerups : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       
+        Timestop();
+
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -44,7 +45,7 @@ public class Powerups : MonoBehaviour
         if (collision.gameObject.CompareTag("TimeStopPowerup"))
         {
             timerIsRunning = true;
-            Timestop();
+
             Debug.Log("touch");
             Destroy(collision.gameObject);
         }
@@ -91,6 +92,7 @@ public class Powerups : MonoBehaviour
             {
                 if (timeRemainingTimeStop > 0)
                 {
+                timeRemainingTimeStop -= Time.deltaTime;    
                     timeStopBar.gameObject.SetActive(true);
                     timeStopFill.fillAmount = timeRemainingTimeStop;
                     Time.timeScale = 0.65f;
