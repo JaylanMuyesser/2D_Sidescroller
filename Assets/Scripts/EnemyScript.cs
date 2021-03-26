@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemyScript : MonoBehaviour
 {
     [SerializeField] private float speedMultiplier = 25f;
-    [SerializeField] private Transform enemy, respawnPoint;
+    public Transform enemy, respawnPoint;
     public GameObject Player;
     private PlayerScript healthCheck, invincibilityCheck;
     private Collider2D enemyCollider;
@@ -13,7 +13,7 @@ public class EnemyScript : MonoBehaviour
     //[SerializeField]
     //private float enemyJump; // Variable float declared for enemyJumpHeight
     [SerializeField]
-    private float enemyJumpSpeed = 10; // variable float declared for enemyJumpSpeed
+    //private float enemyJumpSpeed = 2; // variable float declared for enemyJumpSpeed
     /*
     [SerializeField]
     private bool enemyGrounded;
@@ -30,7 +30,7 @@ public class EnemyScript : MonoBehaviour
         invincibilityCheck = Player.GetComponent<PlayerScript>();
         enemyCollider = GetComponent<Collider2D>();
 
-        enemyRb = enemyRb.GetComponent<Rigidbody2D>(); // making sure the variable gets the RigidBody2D component on start
+        //enemyRb = enemyRb.GetComponent<Rigidbody2D>(); // making sure the variable gets the RigidBody2D component on start
 
        // StartCoroutine(MakeEnemyJump);
     }
@@ -51,8 +51,13 @@ public class EnemyScript : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        if (collision.collider.gameObject.CompareTag("JokeCard"))
+        {
+            enemy.transform.position = respawnPoint.transform.position;
+        }
         if (collision.collider.gameObject.CompareTag("Player"))
         {
+            
             if (invincibilityCheck.invincibilityLength <= 0)
             {
                 enemy.transform.position = respawnPoint.transform.position;
@@ -64,12 +69,6 @@ public class EnemyScript : MonoBehaviour
         }
     }
 /*    
-    private void FixedUpdate()
-    {
-        
-        enemyRb.AddForce(Vector2.up * enemyJumpSpeed, ForceMode2D.Impulse); // on frame it sets the velocity multiplied by enemyJumpSpeed
-    }
-    
     private IEnumerator MakeEnemyJump(0)
     {
         yield return new WaitForSeconds(enemyJumpTimer);
